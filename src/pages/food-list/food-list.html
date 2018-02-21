@@ -51,7 +51,7 @@
     <!-- fav view -->
     <div *ngSwitchCase="'fav'">
       <ion-list>
-        <ion-item-sliding *ngFor="let favItem of favfoodList">
+        <ion-item-sliding *ngFor="let favItem of favFoodList">
           <ion-item (click)="onItemTap($event,item)">
             {{favItem.name}}
           </ion-item>
