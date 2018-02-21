@@ -32,17 +32,15 @@ export class FoodDetailPage {
 	ionViewDidLoad() {
 		console.log("ionViewDidLoad FoodDetailPage");
 		this.AppUtility.showLoadingMask(() => {
-			//this.doApiCall(() => {});
+			this.doApiCall();
 		});
 	}
 
 	// make provider call
 	doApiCall(successCb?: Function, errorCb?: Function, finalCb?: Function) {
-		this.FoodDetailDataProvider.getFoodDetailsBaseUrl(
-			this.foodItem.id
-		).subscribe(
+		this.FoodDetailDataProvider.getFoodDetail(this.foodItem.id).subscribe(
 			data => {
-				this.foodDetailsObj = data.food;
+				this.foodDetailsObj = data.report.food;
 				if (successCb) {
 					successCb();
 				}

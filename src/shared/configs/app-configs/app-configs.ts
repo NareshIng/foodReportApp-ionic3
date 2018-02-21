@@ -24,7 +24,7 @@ export class AppConfigs {
 	public getFoodDetailsBaseUrl(id: string): string {
 		//return "https://api.nal.usda.gov/ndb/reports/?type=b&api_key=DEMO_KEY&ndbno="+id;
 		//45137745
-		let dev_url = "assets/data/food-details.json";
+		let dev_url = "assets/data/food-detail.json";
 		return dev_url;
 	}
 }

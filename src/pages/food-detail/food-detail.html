@@ -12,7 +12,43 @@
     <ion-title>Food Details</ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-
+  <ion-grid no-padding>
+    <ion-row>
+      <ion-col col-2>
+        <b>NDB No</b>
+      </ion-col>
+      <ion-col>
+        {{foodDetailsObj.ndbno}}
+      </ion-col>
+    </ion-row>
+    <br>
+    <ion-row>
+      <ion-col col-2>
+        <b>NAME:</b>
+      </ion-col>
+      <ion-col>
+        {{foodDetailsObj.name}}
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <br>
+  <br>
+  <ion-list>
+    <ion-item-divider>
+      <ion-label>Nutrients </ion-label>
+    </ion-item-divider>
+    <ion-item *ngFor="let item of foodDetailsObj.nutrients">
+      <ion-grid no-padding>
+        <ion-row>
+          <ion-col col-8>
+            {{item.name}}
+          </ion-col>
+          <ion-col col-4>
+            {{item.value}} {{item.unit}}
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 </ion-content>

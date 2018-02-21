@@ -16,9 +16,10 @@ export class FoodListPage {
   defaultFoodListView: string = "all";
 
   foodList: Array<{ id: string; name: string; offset: string }>;
-  favFoodList: Array<{ id: string; name: string; offset: string }>;
+  favFoodList: Array<{ id: string; name: string; offset: string }> = [];
   foodListClone: Array<{ id: string; name: string; offset: string }>;
   favFoodListClone: Array<{ id: string; name: string; offset: string }>;
+  storedfavFoodList: Array<{ id: string; name: string; offset: string }>;
   searchQuery: string = "";
 
   @ViewChild("content") content: Content;
@@ -93,10 +94,18 @@ export class FoodListPage {
     if (val === "fav") {
       this.getfavFoodListFromStorage().then(favFoodListArr => {
         if (favFoodListArr && favFoodListArr.length) {
-          this.favFoodList = favFoodListArr;
+          _.forEach(favFoodListArr, id => {
+            let itemObj = this.getFullObjectFromId(id);
+            this.favFoodList.push(itemObj);
+          });
         }
       });
     }
+  }
+
+  // returns item object from id
+  getFullObjectFromId(id: string): any {
+    return _.find(this.foodListClone, ["id", id]);
   }
 
   // retrieve symbols
@@ -114,17 +123,37 @@ export class FoodListPage {
   // add/remove to/from fav
   toggleFavorite(item: any): void {
     this.getfavFoodListFromStorage().then(favFoodList => {
-      console.log(_.findIndex(favFoodList, item.id));
-      // remove from fav
-      if (_.findIndex(favFoodList, item)) {
-        //this.doRemoveFromFavorites(coin);
-      } else {
+      console.log("hi" + favFoodList);
+
+      if (!(favFoodList && favFoodList.length)) {
         // add to favorites
-        if (!(favFoodList && favFoodList.length)) {
-          favFoodList = [];
-        }
-        favFoodList.push(item);
+        favFoodList = [];
+
+        favFoodList.push(item.id);
+        console.log(favFoodList);
         this.setfavFoodListToStorage(favFoodList);
+      } else {
+        if (_.includes(favFoodList, item.id)) {
+          this.doRemoveFromFavorites(item.id);
+        } else {
+          favFoodList.push(item.id);
+          this.setfavFoodListToStorage(favFoodList);
+        }
+      }
+    });
+  }
+
+  // remove from favorites
+  doRemoveFromFavorites(id: string) {
+    this.getfavFoodListFromStorage().then(favFoodListArr => {
+      if (favFoodListArr && favFoodListArr.length) {
+        _.remove(favFoodListArr, i => {
+          return i === id;
+        });
+        console.log(favFoodListArr);
+        this.setfavFoodListToStorage(favFoodListArr).then(favFoodListArr => {
+          this.FoodListViewChanged("fav");
+        });
       }
     });
   }
@@ -150,7 +179,6 @@ export class FoodListPage {
 
   // go to details page
   onItemTap(event, item) {
-    // That's right, we're pushing to ourselves!
     this.navCtrl.push(FoodDetailPage, {
       item: item
     });

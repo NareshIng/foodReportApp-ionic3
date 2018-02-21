@@ -36,7 +36,7 @@
     <div *ngSwitchCase="'all'">
       <ion-list>
         <ion-item-sliding *ngFor="let item of foodList">
-          <ion-item (click)="onItemTap(item)">
+          <ion-item (click)="onItemTap($event,item)">
             {{item.name}}
           </ion-item>
           <ion-item-options side="right" color="secondary">
@@ -52,7 +52,7 @@
     <div *ngSwitchCase="'fav'">
       <ion-list>
         <ion-item-sliding *ngFor="let favItem of favfoodList">
-          <ion-item (click)="onItemTap(item)">
+          <ion-item (click)="onItemTap($event,item)">
             {{favItem.name}}
           </ion-item>
           <ion-item-options side="right">
