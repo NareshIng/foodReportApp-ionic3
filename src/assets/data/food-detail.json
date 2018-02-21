@@ -1,0 +1,124 @@
+{
+	"report": {
+		"sr": "v0.9 January, 2018",
+		"type": "Basic",
+		"food": {
+			"ndbno": "45137745",
+			"name":
+				"!AJUA!, CAFFEINE FREE SODA, MANDARIN ORANGE, UPC: 061500127178",
+			"ds": "LI",
+			"manu": "!AJUA!",
+			"ru": "ml",
+			"ing": {
+				"desc":
+					"CARBONATED WATER, SUGAR, NATURAL FLAVOR, CITRIC ACID, POTASSIUM BENZOATE (PRESERVATIVE), GUM ACACIA, ESTER GUM, YELLOW 6, BROMINATED VEGETABLE OIL, RED 40.",
+				"upd": "07/14/2017"
+			},
+			"nutrients": [
+				{
+					"nutrient_id": "208",
+					"name": "Energy",
+					"derivation": "LCCS",
+					"group": "Proximates",
+					"unit": "kcal",
+					"value": "50",
+					"measures": [
+						{
+							"label": "OZA",
+							"eqv": 240.0,
+							"eunit": "ml",
+							"qty": 8.0,
+							"value": "120"
+						}
+					]
+				},
+				{
+					"nutrient_id": "203",
+					"name": "Protein",
+					"derivation": "LCCS",
+					"group": "Proximates",
+					"unit": "g",
+					"value": "0.00",
+					"measures": [
+						{
+							"label": "OZA",
+							"eqv": 240.0,
+							"eunit": "ml",
+							"qty": 8.0,
+							"value": "0.00"
+						}
+					]
+				},
+				{
+					"nutrient_id": "204",
+					"name": "Total lipid (fat)",
+					"derivation": "LCCS",
+					"group": "Proximates",
+					"unit": "g",
+					"value": "0.00",
+					"measures": [
+						{
+							"label": "OZA",
+							"eqv": 240.0,
+							"eunit": "ml",
+							"qty": 8.0,
+							"value": "0.00"
+						}
+					]
+				},
+				{
+					"nutrient_id": "205",
+					"name": "Carbohydrate, by difference",
+					"derivation": "LCCS",
+					"group": "Proximates",
+					"unit": "g",
+					"value": "12.50",
+					"measures": [
+						{
+							"label": "OZA",
+							"eqv": 240.0,
+							"eunit": "ml",
+							"qty": 8.0,
+							"value": "30.00"
+						}
+					]
+				},
+				{
+					"nutrient_id": "269",
+					"name": "Sugars, total",
+					"derivation": "LCCS",
+					"group": "Proximates",
+					"unit": "g",
+					"value": "12.08",
+					"measures": [
+						{
+							"label": "OZA",
+							"eqv": 240.0,
+							"eunit": "ml",
+							"qty": 8.0,
+							"value": "28.99"
+						}
+					]
+				},
+				{
+					"nutrient_id": "307",
+					"name": "Sodium, Na",
+					"derivation": "LCCS",
+					"group": "Minerals",
+					"unit": "mg",
+					"value": "15",
+					"measures": [
+						{
+							"label": "OZA",
+							"eqv": 240.0,
+							"eunit": "ml",
+							"qty": 8.0,
+							"value": "36"
+						}
+					]
+				}
+			]
+		},
+		"footnotes": []
+	}
+}

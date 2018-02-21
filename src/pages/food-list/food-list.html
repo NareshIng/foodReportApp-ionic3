@@ -1,0 +1,68 @@
+<ion-header>
+  <ion-navbar no-border-bottom no-padding color="primary">
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-8 offset-2>
+          <ion-segment [(ngModel)]="defaultFoodListView" (ionChange)="FoodListViewChanged($event.value)" color="light" mode="ios">
+            <ion-segment-button value="all">
+              All
+            </ion-segment-button>
+            <ion-segment-button value="fav">
+              Favorites
+            </ion-segment-button>
+          </ion-segment>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="doToggleSearchBar()">
+        <ion-icon name="search"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+  <ion-toolbar color="primary" *ngIf="showSearchBar">
+    <ion-searchbar [(ngModel)]="searchQuery" (ionCancel)="onSearchCancel($event)" (ionInput)="doFilter($event)">
+    </ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content no-padding #content>
+ 
+  <div [ngSwitch]="defaultFoodListView">
+    <!-- all view -->
+    
+    <div *ngSwitchCase="'all'">
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of foodList">
+          <ion-item (click)="onItemTap(item)">
+            {{item.name}}
+          </ion-item>
+          <ion-item-options side="right" color="secondary">
+            <button ion-button (click)="toggleFavorite(item)" *ngIf="defaultFoodListView === 'all'" color="danger">
+              <ion-icon color="light" [name]="isItemInFavs(item) ? 'md-heart' : 'md-heart-outline'"></ion-icon>
+              <span>Favorites</span>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+    <!-- fav view -->
+    <div *ngSwitchCase="'fav'">
+      <ion-list>
+        <ion-item-sliding *ngFor="let favItem of favfoodList">
+          <ion-item (click)="onItemTap(item)">
+            {{favItem.name}}
+          </ion-item>
+          <ion-item-options side="right">
+            <button ion-button (click)="doRemoveFromFavorites(favItem)" *ngIf="defaultFoodListView === 'fav'">
+              <ion-icon name="heart" color="danger"></ion-icon>
+              <span>Favorites</span>
+            </button>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  </div>
+</ion-content>
