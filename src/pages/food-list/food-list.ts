@@ -95,8 +95,10 @@ export class FoodListPage {
       this.getfavFoodListFromStorage().then(favFoodListArr => {
         if (favFoodListArr && favFoodListArr.length) {
           _.forEach(favFoodListArr, id => {
-            let itemObj = this.getFullObjectFromId(id);
-            this.favFoodList.push(itemObj);
+            if (!_.find(this.favFoodList, ["id", id])) {
+              let itemObj = this.getFullObjectFromId(id);
+              this.favFoodList.push(itemObj);
+            }
           });
         }
       });
