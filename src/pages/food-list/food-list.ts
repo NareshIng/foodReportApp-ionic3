@@ -14,6 +14,7 @@ import { AppUtility } from "../../shared/utils/app-utility/app-utility";
 export class FoodListPage {
   //selectedItem: any;
   defaultFoodListView: string = "all";
+  showSearchBar: boolean = false;
 
   foodList: Array<{ id: string; name: string; offset: string }>;
   favFoodList: Array<{ id: string; name: string; offset: string }> = [];

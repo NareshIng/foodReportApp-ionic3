@@ -17,7 +17,7 @@ import { AppUtility } from "../../shared/utils/app-utility/app-utility";
 	templateUrl: "food-detail.html"
 })
 export class FoodDetailPage {
-	foodItem = {};
+	foodItem: any;
 	foodDetailsObj = {};
 
 	constructor(
